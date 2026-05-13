@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2026 American Printing House for the Blind
+  ~ Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
+  -->
+
+<resources>
+    <string name="translator_activity_title">Braille translator</string>
+
+    <string name="braille_to_text">Braille to text</string>
+    <string name="text_to_braille">Text to braille</string>
+    <string name="translate">Translate</string>
+
+    <!-- Braille string for "Enter some Braille text here" -->
+    <string name="braille_arrow">⠫⠒⠒⠕</string>
+    <string name="braille_sample">⠠⠑⠝⠞⠑⠗ ⠎⠕⠍⠑ ⠠⠃⠗⠁⠊⠇⠇⠑ ⠞⠑⠭⠞ ⠓⠑⠗⠑</string>
+</resources>

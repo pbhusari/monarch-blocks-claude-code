@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (c) 2026 American Printing House for the Blind
+  ~ Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
+  -->
+
+<resources>
+    <string name="app_name">Monarch Blocks</string>
+    <string name="title_part_1">Monarch</string>
+    <string name="title_part_2">Blocks</string>
+
+    <string name="enter_statement">Press Enter</string>
+
+    <!--Menu Titles-->
+    <string name="main_menu">Main Menu</string>
+    <string name="braille_translation_menu">Braille Translation Menu</string>
+    <string name="self_brailling_widget_menu_title">SelfBraillingWidget Menu</string>
+    <string name="layout_examples_menu_title">Layout Menu</string>
+
+
+    <string name="self_brailling_widget_activity">Self Brailling Widget Activity</string>
+
+    <!--Main Activity Menu Items-->
+    <string name="self_brailling_samples">SelfBraillingWidget Samples</string>
+    <string name="layout_samples">Layout Samples</string>
+    <string name="braille_translation_sample">Braille Translation Samples</string>
+
+    <!--SelfBraillingWidget Menu Items-->
+    <string name="show_image_example">Simple Image Example</string>
+    <string name="braille_and_image_example">Braille and Image Example</string>
+    <string name="scrolling_braille_image_example">Scrolling Brailling with Image Example</string>
+    <string name="scrolling_braille_only_example">Scrolling Braille (ONLY) Example</string>
+    <string name="grid_movement_example">Grid Example</string>
+
+
+    <string name="vibrate_and_notification_example">Vibrate and Notification Example</string>
+    <string name="accessible_dialog_example">Dialog Example</string>
+    <string name="braille_translation_example">Braille Translation Example</string>
+    <string name="finish_composing_example">Finish Composing Example</string>
+
+    <string name="finish_composing_description">This edit box shows how the "finishComposing" command works. By going into this edit box and pressing enter (Dot 8) it will convert the text in the edit box into braille.</string>
+
+    <string name="test_paragraph">In a small village nestled at the foot of misty mountains, a mysterious traveler arrived one evening, carrying an ancient map and a journal filled with cryptic notes. The locals, intrigued by his presence, gathered at the inn to hear his tales. He spoke of forgotten kingdoms, buried treasures, and the fabled "Crystal of Eternity," said to grant immense power to those who could decipher its secrets. As the fire crackled in the hearth, the traveler unraveled the story of an uncharted island guarded by perilous waters and fierce storms. The villagers, though skeptical, couldn’t deny the allure of adventure. Some believed the traveler was a fugitive, while others thought he was a scholar chasing legends. Despite their doubts, a group of brave souls decided to join him, armed with tools, provisions, and a determination that burned brighter than the lanterns guiding their way through the dark forest. The journey ahead promised danger, discovery, and the possibility of changing their fates forever.</string>
+</resources>
