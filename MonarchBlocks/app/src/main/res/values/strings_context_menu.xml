@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2026 American Printing House for the Blind
+  ~ Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
+  -->
+
+<resources>
+    <string name="context_menu_self_brailling">Self-brailling context menu</string>
+    <string name="context_menu_title">Context Menu</string>
+    <string name="context_menu_bitmaps">Display bitmap images</string>
+    <string name="context_menu_random">Display randomized dots</string>
+    <string name="context_menu_vertical_lines">Display vertical lines</string>
+    <string name="context_menu_scrolling_braille">Display Scrolling Braille with image example</string>
+    <string name="context_menu_title_screen_example">Display Title Screen example</string>
+
+    <string name="humanware_dialog_context_menu">HumanWare Dialog Context Menu</string>
+    <string name="hw_dialog_submenu">HumanWare Dialogs</string>
+    <string name="native_dialogs_title">Native Dialogs Context Menu</string>
+    <string name="native_dialogs_submenu">Native Dialogs</string>
+    <string name="hw_dialog_long_context_menu">HumanWare Dialog (Long) Context Menu</string>
+    <string name="hw_dialog_long_submenu">HumanWare Dialogs (Long)</string>
+    <string name="native_dialogs_long_title">Native Dialogs (Long) Context Menu</string>
+    <string name="native_dialogs_long_submenu">Native Dialogs (Long)</string>
+
+    <string name="simple_dialog">Show simple dialog</string>
+    <string name="loading_dialog">Show loading dialog</string>
+    <string name="progress_dialog">Show progress dialog</string>
+    <string name="ok_dialog">Show OK dialog</string>
+    <string name="ok_cancel_dialog">Show OK/cancel dialog</string>
+    <string name="edit_text_dialog">Show EditTextDialog</string>
+    <string name="show_toast">Show Toast Message</string>
+    <string name="show_snack_bar">Show SnackBar Message</string>
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2026 American Printing House for the Blind
+  ~ Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
+  -->
+
+<keymapping>
+    <application package="org.aph.monarchblocks">
+        <context viewIdResourceName="SelfBraillingWidget">
+            <action name="substitute">
+                <command commandId="action_zoom_in" finishComposing="true" param="168" string="context_menu_zoom_in">
+                    <key>ZoomIn</key>
+                </command>
+                <command commandId="action_zoom_out" convertToCharacter="true" finishComposing="true" param="169" savePanning="true" string="context_menu_zoom_out">
+                    <key>ZoomOut</key>
+                </command>
+                <command commandId="bitmaps" param="113|30" string="context_menu_bitmaps" convertToCharacter="true" savePanning="true">
+                    <key>Dots1289</key>
+                    <key>Ctrl+B</key>
+                </command>
+                <command commandId="random" param="113|59|46" string="context_menu_random" convertToCharacter="true" savePanning="true">
+                    <key>Dots123589</key>
+                    <key>Ctrl+Shift+R</key>
+                </command>
+                <command commandId="vertical_lines" param="113|50" string="context_menu_vertical_lines" convertToCharacter="true" savePanning="true">
+                    <key>Dots123689</key>
+                    <key>Ctrl+V</key>
+                </command>
+                <command
+                    commandId="panningDown"
+                    string=" panningDown"
+                    param="93">
+                    <key>PanningDown</key>
+                </command>
+                <command
+                    commandId="panningUp"
+                    string=" panningUp"
+                    param="92">
+                    <key>PanningUp</key>
+                </command>
+                <command
+                    commandId="key_top_of_document"
+                    param="122"
+                    convertToCharacter="true">
+                    <key>Dots1239</key>
+                </command>
+                <command
+                    commandId="key_bottom_of_document"
+                    param="123"
+                    convertToCharacter="true">
+                    <key>Dots4569</key>
+                </command>
+                <command
+                    commandId="enter"
+                    param="66">
+                    <key>Dots8</key>
+                </command>
+            </action>
+        </context>
+        <context viewIdResourceName="*">
+            <action name="substitute">
+                <command
+                    commandId="show_toast"
+                    param="48"
+                    string="show_toast"
+                    >
+                    <key>Dots23459</key>
+                    <key>Space+T</key>
+                </command>
+                <command
+                    commandId="show_snackbar"
+                    param="47"
+                    string="show_snack_bar"
+                    >
+                    <key>Dots2349</key>
+                    <key>Space+S</key>
+                </command>
+            </action>
+        </context>
+    </application>
+</keymapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2026 American Printing House for the Blind
+  ~ Use of this source code is governed by an MIT-style license that can be found in the LICENSE file.
+  -->
+
+<resources>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="simple_dialog_content">This is where the dialog you wish to display would go.</string>
+
+    <string name="ok_title">Title for OK dialog</string>
+    <string name="ok_only">You may only click OK on this dialog.</string>
+    <string name="ok_or_cancel">You may click OK or Cancel on this dialog.</string>
+
+    <string name="toast_msg">This is a Toast message.</string>
+    <string name="snackbar_msg">This is a SnackBar message.</string>
+</resources>
