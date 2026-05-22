@@ -23,6 +23,7 @@
     <string name="self_brailling_samples">SelfBraillingWidget Samples</string>
     <string name="layout_samples">Layout Samples</string>
     <string name="braille_translation_sample">Braille Translation Samples</string>
+    <string name="claude_code_demo">Claude Code Demo</string>
 
     <!--SelfBraillingWidget Menu Items-->
     <string name="show_image_example">Simple Image Example</string>

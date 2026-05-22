@@ -82,6 +82,7 @@ class MainActivity : AbstractMenuActivity() {
             setNext(makeAccessibleItem(BlocksAppR.string.self_brailling_samples))
             setNext(makeAccessibleItem(BlocksAppR.string.layout_samples))
             setNext(makeAccessibleItem(BlocksAppR.string.braille_translation_sample))
+            setNext(makeAccessibleItem(BlocksAppR.string.claude_code_demo))
 
 
             setOnItemClickListener { _, _, position, _ ->
@@ -89,6 +90,7 @@ class MainActivity : AbstractMenuActivity() {
                     0 -> SelfBraillingMenuActivity::class.java
                     1 -> null
                     2 -> null
+                    3 -> ClaudeCodeDemoActivity::class.java
                     else -> null
                 }
 

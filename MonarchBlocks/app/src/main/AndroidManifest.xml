@@ -101,6 +101,9 @@
         <activity android:name=".activities.ClaudeCodeActivity"
             android:exported="false"/>
 
+        <activity android:name=".activities.ClaudeCodeDemoActivity"
+            android:exported="false"/>
+
         <provider
             android:name="XmlResource"
             android:authorities="org.aph.monarchblocks.XmlResource"
