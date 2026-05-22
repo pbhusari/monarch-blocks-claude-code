@@ -53,4 +53,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Monarch Blocks"
 include(":app")
- 
+

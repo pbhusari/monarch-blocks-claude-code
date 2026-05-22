@@ -12,6 +12,8 @@
 
     The android:name=".MonarchBlocksApplication" is crucial for making the commands work. If that is not added the commands will not work.
     -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MonarchBlocksApplication"
         android:allowBackup="true"
@@ -94,6 +96,9 @@
             />
 
         <activity android:name=".activities.TextEditActivity"
+            android:exported="false"/>
+
+        <activity android:name=".activities.ClaudeCodeActivity"
             android:exported="false"/>
 
         <provider

@@ -52,6 +52,8 @@ dependencies {
     implementation("com.humanware:KeySoftSDK:latest.release") //Needed for Monarch Development
     implementation("com.google.dagger:hilt-android:2.45")//Needed for Monarch Development
     implementation("androidx.core:core-ktx:1.13.1")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     testImplementation(libs.junit)
