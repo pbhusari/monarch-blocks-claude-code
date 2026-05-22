@@ -14,6 +14,8 @@ An Android sample app for the [APH Monarch](https://www.aph.org/monarch/) refres
 
 ### Claude Code Demo (`ClaudeCodeDemoActivity`)
 
+![Claude Code demo on the Monarch braille display](MonarchBlocks/Screenshot%202026-05-22%20at%202.10.25%E2%80%AFPM.png)
+
 A self-running presentation that shows a simulated Claude Code agentic task progressing through four stages (0% → 25% → 61% → 100%). Highlights:
 
 - **Animated braille spinners** on every running subtask, drawn directly to the `DotsMatrix` at the right edge of the display (pin x=93, braille column 31) so they survive the text-to-braille translation pipeline unchanged.
