@@ -34,7 +34,7 @@ import org.aph.monarchblocks.monarch_utils.Position
 /**
  * Presentation demo showing a Claude Code UI mockup on the Monarch 32×10 braille display.
  * Cycles through four frames showing a refactor task at 0% → 25% → 61% → 100%, then loops.
- * Pending subtasks show an animated braille spinner. Auto-advances every 3.5 s.
+ * Pending subtasks show an animated braille spinner. Auto-advances every 3 min.
  * PAGE_DOWN / PAGE_UP navigate manually; MOVE_HOME resets to frame 1.
  */
 class ClaudeCodeDemoActivity : AppCompatActivity() {
@@ -89,7 +89,7 @@ class ClaudeCodeDemoActivity : AppCompatActivity() {
         override fun run() {
             frameIndex = (frameIndex + 1) % frameSpecs.size
             renderFrame()
-            handler.postDelayed(this, 3_500L)
+            handler.postDelayed(this, 180_000L)
         }
     }
 
@@ -186,12 +186,12 @@ class ClaudeCodeDemoActivity : AppCompatActivity() {
         handler.removeCallbacks(spinnerTick)
         handler.removeCallbacks(frameTick)
         handler.postDelayed(spinnerTick, 80L)
-        handler.postDelayed(frameTick, 3_500L)
+        handler.postDelayed(frameTick, 180_000L)
     }
 
     private fun resetFrameTimer() {
         handler.removeCallbacks(frameTick)
-        handler.postDelayed(frameTick, 3_500L)
+        handler.postDelayed(frameTick, 180_000L)
     }
 
     // ── Key handling ──────────────────────────────────────────────────────────
