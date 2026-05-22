@@ -6,9 +6,13 @@
 package org.aph.monarchblocks.activities
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
 import android.util.Size
 import android.view.Gravity
 import android.view.KeyEvent
@@ -28,13 +32,11 @@ import kotlinx.coroutines.launch
 import org.aph.monarchblocks.SCREEN_HEIGHT
 import org.aph.monarchblocks.SCREEN_WIDTH
 import org.aph.monarchblocks.monarch_utils.BrlScrollView
-import org.aph.monarchblocks.monarch_utils.Drawing
-import org.aph.monarchblocks.monarch_utils.Position
 
 /**
  * Presentation demo showing a Claude Code UI mockup on the Monarch 32×10 braille display.
  * Cycles through four frames showing a refactor task at 0% → 25% → 61% → 100%, then loops.
- * Pending subtasks show an animated braille spinner. Auto-advances every 3 min.
+ * While subtasks are running the device pulses every 3 s. Auto-advances every 3 min.
  * PAGE_DOWN / PAGE_UP navigate manually; MOVE_HOME resets to frame 1.
  */
 class ClaudeCodeDemoActivity : AppCompatActivity() {
@@ -72,16 +74,28 @@ class ClaudeCodeDemoActivity : AppCompatActivity() {
 
     private var frameIndex = 0
 
-    // ── Spinner ───────────────────────────────────────────────────────────────
+    // ── Haptics ───────────────────────────────────────────────────────────────
 
-    private val spinnerChars = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
-    private var spinnerIndex = 0
+    private val vibrator: Vibrator by lazy {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            (getSystemService(VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
+        } else {
+            @Suppress("DEPRECATION")
+            getSystemService(VIBRATOR_SERVICE) as Vibrator
+        }
+    }
 
-    private val spinnerTick = object : Runnable {
+    private val hapticTick = object : Runnable {
         override fun run() {
-            spinnerIndex = (spinnerIndex + 1) % spinnerChars.length
-            renderFrame()
-            handler.postDelayed(this, 80L)
+            if (frameSpecs[frameIndex].tasksDone < taskNames.size) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    vibrator.vibrate(VibrationEffect.createOneShot(60, VibrationEffect.DEFAULT_AMPLITUDE))
+                } else {
+                    @Suppress("DEPRECATION")
+                    vibrator.vibrate(60)
+                }
+            }
+            handler.postDelayed(this, 3_000L)
         }
     }
 
@@ -164,28 +178,17 @@ class ClaudeCodeDemoActivity : AppCompatActivity() {
         val text = buildFrameText()
         val sv = BrlScrollView(text, screenDimensions, ::translate, lineSpacing = 1, noIndent = true)
         sv.getPage(brailleScreen)
-        drawSpinners()
         mutableViewedImage.value = brailleScreen.matrix
         mutableLiveDots.value    = brailleScreen.matrix
         textOverlay.text = "── Frame ${frameIndex + 1}/${frameSpecs.size} ──\n$text"
     }
 
-    // 5 header lines × 4 pins each; spinner at x=93 (braille column 31, the last column).
-    private fun drawSpinners() {
-        val spec = frameSpecs[frameIndex]
-        if (spec.tasksDone >= taskNames.size) return
-        val spinner = spinnerChars[spinnerIndex].toString()
-        for (i in spec.tasksDone until taskNames.size) {
-            Drawing.freeformBraille(spinner, brailleScreen, Position(93, (5 + i) * 4))
-        }
-    }
-
     // ── Timers ────────────────────────────────────────────────────────────────
 
     private fun startTimers() {
-        handler.removeCallbacks(spinnerTick)
+        handler.removeCallbacks(hapticTick)
         handler.removeCallbacks(frameTick)
-        handler.postDelayed(spinnerTick, 80L)
+        handler.postDelayed(hapticTick, 3_000L)
         handler.postDelayed(frameTick, 180_000L)
     }
 
@@ -233,7 +236,7 @@ class ClaudeCodeDemoActivity : AppCompatActivity() {
     }
 
     override fun onStop() {
-        handler.removeCallbacks(spinnerTick)
+        handler.removeCallbacks(hapticTick)
         handler.removeCallbacks(frameTick)
         manager.unbindService()
         translator.unbindService()
