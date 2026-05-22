@@ -6,11 +6,15 @@
 package org.aph.monarchblocks.activities
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.text.InputType
 import android.util.Size
+import android.view.Gravity
 import android.view.KeyEvent
 import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
@@ -68,6 +72,7 @@ class ClaudeCodeActivity : AppCompatActivity() {
     private val mutableViewedImage = MutableLiveData<Array<ByteArray>>()
     private var scrollView: BrlScrollView? = null
     private var brailleReady = false
+    private var textOverlay: TextView? = null
 
     private val http = OkHttpClient.Builder()
         .connectTimeout(30, TimeUnit.SECONDS)
@@ -117,9 +122,25 @@ class ClaudeCodeActivity : AppCompatActivity() {
                 override fun onFocused() = refreshScreen()
                 override fun onDoubleTapAtBraillePosition(x: Int, y: Int) {}
             }
+            textOverlay = TextView(this).apply {
+                setBackgroundColor(Color.argb(210, 0, 0, 0))
+                setTextColor(Color.WHITE)
+                textSize = 14f
+                typeface = android.graphics.Typeface.MONOSPACE
+                setPadding(24, 16, 24, 16)
+                gravity = Gravity.BOTTOM or Gravity.START
+            }
             brailleReady = true
         }
-        setContentView(widget)
+        val overlay = textOverlay!!
+        val root = FrameLayout(this).apply {
+            addView(widget, FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT))
+            addView(overlay, FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT,
+                Gravity.BOTTOM))
+        }
+        setContentView(root)
         supportActionBar?.hide()
     }
 
@@ -173,6 +194,7 @@ class ClaudeCodeActivity : AppCompatActivity() {
         mode = Mode.LOADING
         ensureBrailleView()
         clearScreen(); refreshScreen()
+        textOverlay?.text = "Thinking…"
         manager.announceText("Thinking")
 
         lifecycleScope.launch {
@@ -187,6 +209,7 @@ class ClaudeCodeActivity : AppCompatActivity() {
         val sv = BrlScrollView(text, screenDimensions, ::translate)
         sv.getPage(brailleScreen)
         scrollView = sv
+        textOverlay?.text = text
         refreshScreen()
         manager.announceText(text.take(200))
     }
